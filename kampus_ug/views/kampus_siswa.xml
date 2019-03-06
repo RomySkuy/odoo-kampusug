@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record  id="kampus_siswa_action" model="ir.actions.act_window">
+            <field name="name">Kampus Siswa</field>
+            <field name="res_model">kampus.siswa</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="kampus_siswa_menu" 
+        name="Kampus Siswa" 
+        sequence="200"/>
+
+        <menuitem id="sub_kampus_siswa_menu" 
+        parent="kampus_siswa_menu" 
+        name="Kampus Siswa" 
+        sequence="50" 
+        action="kampus_siswa_action" />
+
+        <menuitem id="sub_kampus_siswa_menu_2" 
+        parent="kampus_siswa_menu" 
+        name="Mata Kuliah" 
+        sequence="60" 
+        action="kampus_siswa_action" />
+        
+        <!-- Tree view for the menuitem -->
+        <record id="kampus_siswa_tree" model="ir.ui.view">
+            <field name="name">kampus.siswa.tree</field>
+            <field name="model">kampus.siswa</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="no_induk"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form view for the menuitem -->
+        <record id="kampus_siswa_form" model="ir.ui.view">
+            <field name="name">kampus.siswa.form</field>
+            <field name="model">kampus.siswa</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_cancel" string="Cancel" type="object" />
+                        <field name="status" widget="statusbar" clickable="True" statusbar_visible="draft,open"/>
+                        <!-- <button name="get_post" string="Postpone" type="object" /> -->
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="no_induk"/>
+                                <field name="alamat"/>
+                                <field name="telp"/>
+                                <field name="tanggal_lahir"/>
+                                <field name="state"/>
+                            </group>
+                            <group>
+                                <field name="kuliah_fav"/>
+                                <field name="fakultas_id"/>
+                            </group>
+                        </group>
+                        <field name="jurusan_ids" widget="many2many">
+                            <tree>
+                                <field name="name"/>
+                                <field name="name_id"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

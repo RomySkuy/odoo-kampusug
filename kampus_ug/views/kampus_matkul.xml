@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record  id="kampus_matkul_action" model="ir.actions.act_window">
+            <field name="name">Kampus Matkul</field>
+            <field name="res_model">kampus.matkul</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="kampus_matkul_menu" name="Kampus Matkul" sequence="200"/>
+        <menuitem id="sub_kampus_matkul_menu" parent="kampus_matkul_menu" name="Kampus Matkul" sequence="50" action="kampus_matkul_action" />
+        
+        <!-- Tree view for the menuitem -->
+        <record id="kampus_matkul_tree" model="ir.ui.view">
+            <field name="name">kampus.matkul.tree</field>
+            <field name="model">kampus.matkul</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form view for the menuitem -->
+        <record id="kampus_matkul_form" model="ir.ui.view">
+            <field name="name">kampus.matkul.form</field>
+            <field name="model">kampus.matkul</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <!-- <button name="action_cancel" string="Cancel" type="object" /> -->
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="siswa_ikut"/>
+                            </group>
+                                <field name="siswa_many_ids" widget="many2many"/>
+                            
+                                <!-- <field name="siswa_ids"/> -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

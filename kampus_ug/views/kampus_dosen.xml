@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record  id="kampus_dosen_action" model="ir.actions.act_window">
+            <field name="name">Kampus Dosen</field>
+            <field name="res_model">kampus.dosen</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="kampus_dosen_menu" name="Kampus Dosen" sequence="200"/>
+        <menuitem id="sub_kampus_dosen_menu" parent="kampus_dosen_menu" name="Kampus Dosen" sequence="50" action="kampus_dosen_action" />
+        
+        <!-- Tree view for the menuitem -->
+        <record id="kampus_dosen_tree" model="ir.ui.view">
+            <field name="name">kampus.dosen.tree</field>
+            <field name="model">kampus.dosen</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="alamat"/>
+                    <field name="waktu"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form view for the menuitem -->
+        <record id="kampus_dosen_form" model="ir.ui.view">
+            <field name="name">kampus.dosen.form</field>
+            <field name="model">kampus.dosen</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="hitung_kuliah" string="Cancel" type="object" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="jumlah_kuliah"/>
+                                <field name="name"/>
+                                <field name="alamat"/>
+                                <field name="waktu"/>
+                            </group>
+                            <group>
+                            </group>
+                                <field name="kuliah_ids"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

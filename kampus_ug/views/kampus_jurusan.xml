@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record  id="kampus_jurusan_action" model="ir.actions.act_window">
+            <field name="name">Kampus Jurusan</field>
+            <field name="res_model">kampus.jurusan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="kampus_jurusan_menu" name="Kampus Jurusan" sequence="200"/>
+        <menuitem id="sub_kampus_jurusan_menu" parent="kampus_jurusan_menu" name="Kampus Jurusan" sequence="50" action="kampus_jurusan_action" />
+        
+        <!-- Tree view for the menuitem -->
+        <record id="kampus_jurusan_tree" model="ir.ui.view">
+            <field name="name">kampus.jurusan.tree</field>
+            <field name="model">kampus.jurusan</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form view for the menuitem -->
+        <record id="kampus_jurusan_form" model="ir.ui.view">
+            <field name="name">kampus.jurusan.form</field>
+            <field name="model">kampus.jurusan</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <!-- <button name="action_cancel" string="Cancel" type="object" /> -->
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="name_id"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
